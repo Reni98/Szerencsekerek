@@ -1,291 +1,312 @@
 var app = app || {};
 
 app = (function() {
-  'use strict';
-  
-  var wheel = function() {
+  'use strict';
+  
+  var wheel = function() {
 
-    // set up all our vars which are shared across functions
+    // set up all our vars which are shared across functions
 
-    var containerEl = document.getElementById('container'),
+    var containerEl = document.getElementById('container'),
 
-    wedgeColors = [
-      '#2980B9', // dark blue
-      '#2ecc71', // green
-      '#3498db', // blue
-      '#34495e', // metal blue
-      '#f1c40f', // yellow
-      '#e74c3c', // red
-      '#16A085', // fern
-      //'#95a5a6',  // grey
-      '#34495E', // wet ashpalt
-      '#C0392B', // pomegranate
-      '#e98b39' // orange
-    ],
+    wedgeColors = [
+      '#2980B9', // dark blue
+      '#2ecc71', // green
+      '#3498db', // blue
+      '#34495e', // metal blue
+      '#f1c40f', // yellow
+      '#e74c3c', // red
+      '#16A085', // fern
+      //'#95a5a6',  // grey
+      '#34495E', // wet ashpalt
+      '#C0392B', // pomegranate
+      '#e98b39' // orange
+    ],
 
-    numOfWedges = 10,
-    wheelRadius = 260,
-    maxAngularVelocity = 360 * 1.5,
-    angularFriction = 0.75,
-    angularVelocity = 360,
-    lastRotation = 0,
-    controlled = false, // set true for no autospin
+    numOfWedges = 10,
+    wheelRadius = 360,
+    maxAngularVelocity = 360 * 1.5,
+    angularFriction = 0.75,
+    angularVelocity = 360,
+    lastRotation = 0,
+    controlled = false, // set true for no autospin
 
-    target,
-    activeWedge,
-    stage,
-    layer,
-    wheel,
-    pointer,
-    pointerTween,
-    startRotation,
-    startX,
-    startY;
-
-
-    // used for randomizing the colour array
-    // Fisher-Yates (aka Knuth) Shuffle
-    function shuffle(array) {
-      var currentIndex = array.length, temporaryValue, randomIndex ;
-
-      // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
-
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
-
-      return array;
-    }
-
-    // now we shuffle the color array
-    shuffle( wedgeColors );
-
-    function addWedge(n) {
-      
-      var angle = 360 / numOfWedges;
-
-      var wedge = new Kinetic.Group({
-        rotation: n * 360 / numOfWedges,
-      });
+    target,
+    activeWedge,
+    stage,
+    layer,
+    wheel,
+    pointer,
+    pointerTween,
+    startRotation,
+    startX,
+    startY;
 
 
-      var wedgeBackground = new Kinetic.Wedge({
-        radius: wheelRadius,
-        angle: angle,
-        fill: wedgeColors.pop(),
-        //stroke: '#fff',
-        //strokeWidth: 2,
-        rotation: (90 + angle/2) * -1
-      });
+    // used for randomizing the colour array
+    // Fisher-Yates (aka Knuth) Shuffle
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex ;
 
-      wedge.add(wedgeBackground);
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
 
-      var text = new Kinetic.Text({
-        text: '0',
-        fontFamily: 'Fredoka One',
-        fontSize: 40,
-        fill: '#fff',
-        align: 'center',
-        //stroke: '#fff',
-        //strokeWidth: 2,
-        opacity: 0.95,
-        listening: false
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
 
-      });
-      
-      text.offsetX(text.width()/2);
-      text.offsetY(wheelRadius - 15);
-      
-      wedge.add(text);
-      wheel.add(wedge);
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
 
-    }
+      return array;
+    }
 
-    function animate(frame) {
-      // wheel
-      var angularVelocityChange = angularVelocity * frame.timeDiff * (1 - angularFriction) / 1000;
-      angularVelocity -= angularVelocityChange;
+    // now we shuffle the color array
+    shuffle( wedgeColors );
 
-      if(controlled) {
-        angularVelocity = ((wheel.getRotation() - lastRotation) * 1000 / frame.timeDiff);
-      }
-      else {
-        wheel.rotate(frame.timeDiff * angularVelocity / 1000);
-      }
-      lastRotation = wheel.getRotation();
-      
-      // pointer
-      var intersectedWedge = layer.getIntersection({
-        x: stage.width()/2, 
-        y: 50
-      });
-      
-      if (intersectedWedge && (!activeWedge || activeWedge._id !== intersectedWedge._id)) {
-        pointerTween.reset();
-        pointerTween.play();
-        activeWedge = intersectedWedge; 
+    function addWedge(n) {
+      
+      var angle = 360 / numOfWedges;
+
+      var wedge = new Kinetic.Group({
+        rotation: n * 360 / numOfWedges,
+      });
+
+
+      var wedgeBackground = new Kinetic.Wedge({
+        radius: wheelRadius,
+        angle: angle,
+        fill: wedgeColors.pop(),
+        //stroke: '#fff',
+        //strokeWidth: 2,
+        rotation: (90 + angle/2) * -1
+      });
+
+      wedge.add(wedgeBackground);
+      var wedgeLabels = [
+  "Ajándékcsomag",
+  "Gravírozott toll",
+  "Hűtőmágnes",
+  "Joker",
+  "Sulis pohár",
+  "Hűtőmágnes",
+  "Joker",
+  "Ajándékcsomag",
+  "Sulis pohár",
+  "Jackpot"
+];
+
+      var text = new Kinetic.Text({
+        text: wedgeLabels[n],
+        fontFamily: 'Fredoka One',
+        // A képhez hasonlóan állítsuk be a betűméretet. A 40 lehet túl nagy.
+        fontSize: 30, 
+        fill: '#000', // Fekete, hogy látszódjon a világos színeken
+        align: 'center',
+        //stroke: '#fff',
+        //strokeWidth: 2,
+        opacity: 0.95,
+        listening: false,
         
-       //$('#winner').text(activeWedge.parent.children[1].partialText);
+        // *** MÓDOSÍTÁS 1: Elforgatja a szöveget, hogy sugárirányban álljon ***
+        rotation: 90 
+      });
+      
+      // *** MÓDOSÍTÁS 2: Beállítja az eltolást (offset), hogy a szöveg ne folyjon össze ***
+      
+      // Mivel 90 fokkal elforgattuk, az X eltolás vezérli a sugárirányú pozíciót.
+      // Ezzel a szöveget 30 egységgel a kerék szélétől befelé toljuk.
+      text.offsetX(wheelRadius - 30);
+      
+      // Az Y eltolás a szöveg közepét állítja a körcikk középvonalára.
+      text.offsetY(text.height()/2);
+      
+      wedge.add(text);
+      wheel.add(wedge);
 
-      }
-    }
+    }
 
-    function init() {
-      stage = new Kinetic.Stage({
-        container: 'container',
-        width: wheelRadius * 2,
-        height: wheelRadius * 2 + 20 // plus 20 is for the pointer
-      });
-      layer = new Kinetic.Layer();
-      wheel = new Kinetic.Group({
-        x: stage.getWidth() / 2 ,
-        y: wheelRadius + 20
-      });
+    function animate(frame) {
+      // wheel
+      var angularVelocityChange = angularVelocity * frame.timeDiff * (1 - angularFriction) / 1000;
+      angularVelocity -= angularVelocityChange;
 
-      for (var n = 0; n < numOfWedges; n++) {
-        addWedge(n);
-      }
-      
-      pointer = new Kinetic.Wedge({
-        fill: '#dedede',
-        //stroke: '#fff',
-        //strokeWidth: 0,
-        lineJoin: 'round',
-        angle: 45,
-        radius: 35,
-        x: stage.getWidth() / 2,
-        y: 28,
-        rotation: -105
-      });
+      if(controlled) {
+        angularVelocity = ((wheel.getRotation() - lastRotation) * 1000 / frame.timeDiff);
+      }
+      else {
+        wheel.rotate(frame.timeDiff * angularVelocity / 1000);
+      }
+      lastRotation = wheel.getRotation();
+      
+      // pointer
+      var intersectedWedge = layer.getIntersection({
+        x: stage.width()/2, 
+        y: 50
+      });
+      
+      if (intersectedWedge && (!activeWedge || activeWedge._id !== intersectedWedge._id)) {
+        pointerTween.reset();
+        pointerTween.play();
+        activeWedge = intersectedWedge; 
+        
+       //$('#winner').text(activeWedge.parent.children[1].partialText);
 
-      // add components to the stage
-      layer.add(wheel);
-      layer.add(pointer);
-      stage.add(layer);
-      
-      pointerTween = new Kinetic.Tween({
-        node: pointer,
-        duration: 0.1,
-        easing: Kinetic.Easings.EaseInOut,
-        y: 30
-      });
-      
-      pointerTween.finish();
-      
-      var radiusPlus2 = wheelRadius + 2;
-      
-      /*wheel.cache({
-        x: -1* radiusPlus2,
-        y: -1* radiusPlus2,
-        width: radiusPlus2 * 2,
-        height: radiusPlus2 * 2
-      }).offset({
-        x: radiusPlus2,
-        y: radiusPlus2
-      });*/
-      
-      layer.draw();
+      }
+    }
+
+    function init() {
+      stage = new Kinetic.Stage({
+        container: 'container',
+        width: wheelRadius * 2,
+        height: wheelRadius * 2 + 20 // plus 20 is for the pointer
+      });
+      layer = new Kinetic.Layer();
+      wheel = new Kinetic.Group({
+        x: stage.getWidth() / 2 ,
+        y: wheelRadius + 20
+      });
+
+      for (var n = 0; n < numOfWedges; n++) {
+        addWedge(n);
+      }
+      
+      pointer = new Kinetic.Wedge({
+        fill: '#dedede',
+        //stroke: '#fff',
+        //strokeWidth: 0,
+        lineJoin: 'round',
+        angle: 45,
+        radius: 35,
+        x: stage.getWidth() / 2,
+        y: 28,
+        rotation: -105
+      });
+
+      // add components to the stage
+      layer.add(wheel);
+      layer.add(pointer);
+      stage.add(layer);
+      
+      pointerTween = new Kinetic.Tween({
+        node: pointer,
+        duration: 0.1,
+        easing: Kinetic.Easings.EaseInOut,
+        y: 30
+      });
+      
+      pointerTween.finish();
+      
+      var radiusPlus2 = wheelRadius + 2;
+      
+      /*wheel.cache({
+        x: -1* radiusPlus2,
+        y: -1* radiusPlus2,
+        width: radiusPlus2 * 2,
+        height: radiusPlus2 * 2
+      }).offset({
+        x: radiusPlus2,
+        y: radiusPlus2
+      });*/
+      
+      layer.draw();
 
 
-      // Time to start adding the event listeners
-      
-      function handleMovement() {
+      // Time to start adding the event listeners
+      
+      function handleMovement() {
 
-        var touchPosition = stage.getPointerPosition(),
-            x1 = touchPosition.x - wheel.x(),
-            y1 = touchPosition.y - wheel.y();         
-      
-        if (controlled && target) {
+        var touchPosition = stage.getPointerPosition(),
+            x1 = touchPosition.x - wheel.x(),
+            y1 = touchPosition.y - wheel.y();         
+      
+        if (controlled && target) {
 
-          var x2 = startX - wheel.x(),
-              y2 = startY - wheel.y(),
-              angle1 = Math.atan(y1 / x1) * 180 / Math.PI,
-              angle2 = Math.atan(y2 / x2) * 180 / Math.PI,
-              angleDiff = angle2 - angle1;
-          
-          if ((x1 < 0 && x2 >=0) || (x2 < 0 && x1 >=0)) {
-            angleDiff += 180;
-          }
+          var x2 = startX - wheel.x(),
+              y2 = startY - wheel.y(),
+              angle1 = Math.atan(y1 / x1) * 180 / Math.PI,
+              angle2 = Math.atan(y2 / x2) * 180 / Math.PI,
+              angleDiff = angle2 - angle1;
+          
+          if ((x1 < 0 && x2 >=0) || (x2 < 0 && x1 >=0)) {
+            angleDiff += 180;
+          }
 
-          wheel.setRotation(startRotation - angleDiff);
+          wheel.setRotation(startRotation - angleDiff);
 
-        }
-      };
+        }
+      };
 
 
-      wheel.on('mousedown touchstart', function(e) {
-        //e.evt.preventDefault();
-        
-        angularVelocity = 0;
-        controlled = true;
-        target = e.target;
-        startRotation = this.rotation();
-        
-        var touchPosition = stage.getPointerPosition();
+      wheel.on('mousedown touchstart', function(e) {
+        //e.evt.preventDefault();
+        
+        angularVelocity = 0;
+        controlled = true;
+        target = e.target;
+        startRotation = this.rotation();
+        
+        var touchPosition = stage.getPointerPosition();
 
-        startX = touchPosition.x;
-        startY = touchPosition.y;
+        startX = touchPosition.x;
+        startY = touchPosition.y;
 
-        // only track the movement if the mouse/finger is down
+        // only track the movement if the mouse/finger is down
 
-        document.addEventListener('mousemove', handleMovement );
-        document.addEventListener('touchmove', handleMovement );
-        
-      });
-      
+        document.addEventListener('mousemove', handleMovement );
+        document.addEventListener('touchmove', handleMovement );
+        
+      });
+      
 
-      function releaseTheWheel() {
-        
-        controlled = false;
+      function releaseTheWheel() {
+        
+        controlled = false;
 
-        if (angularVelocity > maxAngularVelocity) {
-          angularVelocity = maxAngularVelocity;
+        if (angularVelocity > maxAngularVelocity) {
+          angularVelocity = maxAngularVelocity;
 
-        } else if (angularVelocity < -1 * maxAngularVelocity) {
-          angularVelocity = -1 * maxAngularVelocity;
-        }
+        } else if (angularVelocity < -1 * maxAngularVelocity) {
+          angularVelocity = -1 * maxAngularVelocity;
+        }
 
-        // REMOVE event listeners once the wheel has been released, otherwise console errors
+        // REMOVE event listeners once the wheel has been released, otherwise console errors
 
-        document.removeEventListener('mousemove', handleMovement );
-        document.removeEventListener('touchmove', handleMovement );
+        document.removeEventListener('mousemove', handleMovement );
+        document.removeEventListener('touchmove', handleMovement );
 
-      };
+      };
 
-      document.addEventListener('mouseup', releaseTheWheel );
-      document.addEventListener('touchend', releaseTheWheel );
-      
+      document.addEventListener('mouseup', releaseTheWheel );
+      document.addEventListener('touchend', releaseTheWheel );
+      
 
-      var anim = new Kinetic.Animation(animate, layer);
-      //document.getElementById('debug').appendChild(layer.hitCanvas._canvas);
+      var anim = new Kinetic.Animation(animate, layer);
+      //document.getElementById('debug').appendChild(layer.hitCanvas._canvas);
 
-      anim.start();
-  
-    }
+      anim.start();
+  
+    }
 
-    init();
-    containerEl.className = 'visible';
-    
-  }
+    init();
+    containerEl.className = 'visible';
+    
+  }
 
-  return {
-    wheel: wheel
-  };
+  return {
+    wheel: wheel
+  };
 
 
 })();
 
 
 window.onload = function() {
-    'use strict';
+    'use strict';
 
-	app.wheel();
-	
+  app.wheel();
+  
 };
