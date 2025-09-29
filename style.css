@@ -42,7 +42,7 @@ h1 {
   max-width: 80vw;
   margin: 1em 0;  /* csak függőleges margó */
   animation: bounceInUp 0.6s 1;
-  font-size: 32px;
+  font-size: 34px;
   font-style: bold;
   color: #fff;
 }
