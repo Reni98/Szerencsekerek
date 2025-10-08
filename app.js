@@ -26,7 +26,7 @@ app = (function() {
     numOfWedges = 10,
     
     // === ITT VANNAK AZ ÚJ BEÁLLÍTÁSOK A RESZPONZÍV KERÉKMÉRETHEZ ===
-    maxRadius = 300, // A kerék maximális sugara (max. 500px átmérő)
+    maxRadius = 260, // A kerék maximális sugara (max. 500px átmérő)
     // Kiszámoljuk a kisebbik képernyődimenzió 45%-át
     calculatedRadius = Math.min(window.innerWidth, window.innerHeight) * 0.45, 
     // A végső sugár a maximális és a számított érték közül a kisebbik lesz
@@ -110,7 +110,7 @@ app = (function() {
       var text = new Kinetic.Text({
         text: wedgeLabels[n],
         fontFamily: 'Fredoka One',
-        fontSize: 20, 
+        fontSize: 18, 
         fill: '#000', // Fekete, hogy látszódjon a világos színeken
         align: 'center',
         
