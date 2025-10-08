@@ -4,7 +4,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 14px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -16,7 +16,7 @@ body {
   align-items: center;      
   min-height: 100vh;
   text-align: center;
-  background-color: #ededed; /* háttérszín */
+  background-color: #ededed;
   overflow: hidden;
   background-color: #ededed;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nODQwJyBoZWlnaHQ9JzQyMCcgdmlld0JveD0nMCAwIDE2OCA4NCc+Cgk8ZGVmcz4KCQk8cGF0aCBpZD0ncycgZmlsbD0nI2ZmZmZmZicgZD0nTTAsMGwxNCA3bC0xNCw3eicvPgoJPC9kZWZzPgoJPGcgaWQ9J2InPgoJPHVzZSB4PSctMTQnIHk9Jy03JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzAnIHk9JzAnIGZpbGwtb3BhY2l0eT0nMC43NScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0xNCcgeT0nNycgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjc1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMCcgeT0nMTQnIGZpbGwtb3BhY2l0eT0nMC43NScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0xNCcgeT0nMjEnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzAnIHk9JzI4JyBmaWxsLW9wYWNpdHk9JzAuNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0xNCcgeT0nMzUnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC41JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMTQnIHk9Jy03JyBmaWxsLW9wYWNpdHk9JzAuNzUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctMjgnIHk9JzAnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzE0JyB5PSc3JyBmaWxsLW9wYWNpdHk9JzAuNzUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctMjgnIHk9JzE0JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzE0JyB5PScyMScgZmlsbC1vcGFjaXR5PScwLjI1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTI4JyB5PScyOCcgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PScxNCcgeT0nMzUnIGZpbGwtb3BhY2l0eT0nMC43NScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy00MicgeT0nLTcnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC41JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMjgnIHk9JzAnIGZpbGwtb3BhY2l0eT0nMC41JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTQyJyB5PSc3JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuNzUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PScyOCcgeT0nMTQnIGZpbGwtb3BhY2l0eT0nMC41JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTQyJyB5PScyMScgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjI1JyB4bGluazpocmVmPScjcycgLz4JCgk8dXNlIHg9JzI4JyB5PScyOCcgZmlsbC1vcGFjaXR5PScwLjUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctNDInIHk9JzM1JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzQyJyB5PSctNycgZmlsbC1vcGFjaXR5PScwLjUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctNTYnIHk9JzAnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC41JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nNDInIHk9JzcnIGZpbGwtb3BhY2l0eT0nMC4yNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy01NicgeT0nMTQnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC43NScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzQyJyB5PScyMScgZmlsbC1vcGFjaXR5PScwLjc1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTU2JyB5PScyOCcgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjI1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nNDInIHk9JzM1JyBmaWxsLW9wYWNpdHk9JzAuNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy03MCcgeT0nLTcnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC43NScgeGxpbms6aHJlZj0nI3MnIC8+CQoJPHVzZSB4PSc1NicgeT0nMCcgZmlsbC1vcGFjaXR5PScxJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTcwJyB5PSc3JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMjUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSc1NicgeT0nMTQnIGZpbGwtb3BhY2l0eT0nMC41JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTcwJyB5PScyMScgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjc1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nNTYnIHk9JzI4JyBmaWxsLW9wYWNpdHk9JzAuMjUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctNzAnIHk9JzM1JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuNzUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSc3MCcgeT0nLTcnIGZpbGwtb3BhY2l0eT0nMC41JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTg0JyB5PScwJyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuNScgeGxpbms6aHJlZj0nI3MnIC8+CQoJPHVzZSB4PSc3MCcgeT0nNycgZmlsbC1vcGFjaXR5PScxJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTg0JyB5PScxNCcgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjUnIHhsaW5rOmhyZWY9JyNzJyAvPgkKCTx1c2UgeD0nNzAnIHk9JzIxJyBmaWxsLW9wYWNpdHk9JzAuNzUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctODQnIHk9JzI4JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzcwJyB5PSczNScgZmlsbC1vcGFjaXR5PScwLjUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPC9nPgoJPHVzZSB4PSctODQnIHk9JzQyJyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyB4bGluazpocmVmPScjYicgLz4KCTx1c2UgeD0nLTE2OCcgeT0nLTI4JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgLTEgMCAwKScgeGxpbms6aHJlZj0nI2InIC8+Cgk8dXNlIHg9Jzg0JyB5PSctNTYnIHRyYW5zZm9ybT0nbWF0cml4KDEgMCAwIC0xIDAgMCknIHhsaW5rOmhyZWY9JyNiJyAvPgoJPHVzZSB4PSc4NCcgeT0nLTk4JyB0cmFuc2Zvcm09J21hdHJpeCgxIDAgMCAtMSAwIDApJyB4bGluazpocmVmPScjYicgLz4KPC9zdmc+Cg==');
   
@@ -26,23 +26,27 @@ h1 {
   font-family: 'Fredoka One', Arial, sans-serif;
   letter-spacing: -1px;
   color: #444;
-  padding: 0.5em;
-  max-width: 90%;
+  /* padding: 0.5em; */
+  /* max-width: 90%; */
   animation: bounceInDown 0.6s;
+  text-align: center;   
+  margin: 0 auto;       
 
-  @media (min-width: 600px) {
-    font-size: 3em;
-    padding: 0 2em;
+  @media (max-width: 767px) {
+    text-align: center;
+    font-size: 2em;
+    margin: auto;
   }
+
 }
 
 #container {
-  display: block;
-  margin: 0 auto;
-  max-width: 80vw;
-  margin: 1em 0;  /* csak függőleges margó */
+  /* display: block; */
+  /* margin: 1em auto; */
+  max-width: 50vw;
+  margin: 1em 0;  
   animation: bounceInUp 0.6s 1;
-  font-size: 34px;
+  font-size: 3vw;
   font-style: bold;
   color: #fff;
 }
@@ -98,4 +102,34 @@ p {
 
 a {
   color: #e98b39; 
+}
+
+/* Nagy monitorokhoz */
+@media (min-width: 1200px) {
+  h1{
+    text-align: center;
+    font-size: 2em;
+  }
+  #container {
+    font-size: 40px;
+  }
+}
+
+/* Tabletekhez */
+@media (min-width: 768px) and (max-width: 1199px) {
+  #container {
+    font-size: 28px;
+  }
+}
+
+/* Mobilokhoz */
+@media (max-width: 767px) {
+  h1{
+    text-align: center;
+    font-size: 2em;
+    margin: 0 auto;
+  }
+  #container {
+    font-size: 20px;
+  }
 }

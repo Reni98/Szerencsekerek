@@ -24,9 +24,17 @@ app = (function() {
     ],
 
     numOfWedges = 10,
-    wheelRadius = 360,
+    
+    // === ITT VANNAK AZ ÚJ BEÁLLÍTÁSOK A RESZPONZÍV KERÉKMÉRETHEZ ===
+    maxRadius = 250, // A kerék maximális sugara (max. 500px átmérő)
+    // Kiszámoljuk a kisebbik képernyődimenzió 45%-át
+    calculatedRadius = Math.min(window.innerWidth, window.innerHeight) * 0.45, 
+    // A végső sugár a maximális és a számított érték közül a kisebbik lesz
+    wheelRadius = Math.min(maxRadius, calculatedRadius),
+    // =================================================================
+    
     maxAngularVelocity = 360 * 1.5,
-    angularFriction = 0.75,
+    angularFriction = 0.5,
     angularVelocity = 360,
     lastRotation = 0,
     controlled = false, // set true for no autospin
@@ -87,32 +95,32 @@ app = (function() {
 
       wedge.add(wedgeBackground);
       var wedgeLabels = [
-  "Ajándékcsomag",
-  "Gravírozott toll",
-  "Hűtőmágnes",
+  "Sütemény",
+  "Órarend",
+  "Sütemény és Csokoládé",
   "Joker",
-  "Sulis pohár",
-  "Hűtőmágnes",
+  "Órarend",
+  "Sütemény",
   "Joker",
-  "Ajándékcsomag",
-  "Sulis pohár",
-  "Jackpot"
+  "Suli toll",
+  "Csokoládé",
+  "Suli toll"
 ];
 
       var text = new Kinetic.Text({
         text: wedgeLabels[n],
         fontFamily: 'Fredoka One',
         // A képhez hasonlóan állítsuk be a betűméretet. A 40 lehet túl nagy.
-        fontSize: 30, 
+        fontSize: 20, 
         fill: '#000', // Fekete, hogy látszódjon a világos színeken
         align: 'center',
         //stroke: '#fff',
         //strokeWidth: 2,
         opacity: 0.95,
         listening: false,
-        
-        // *** MÓDOSÍTÁS 1: Elforgatja a szöveget, hogy sugárirányban álljon ***
-        rotation: 90 
+        
+        // *** MÓDOSÍTÁS 1: Elforgatja a szöveget, hogy sugárirányban álljon ***
+        rotation: 90 
       });
       
       // *** MÓDOSÍTÁS 2: Beállítja az eltolást (offset), hogy a szöveg ne folyjon össze ***
