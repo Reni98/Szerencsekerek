@@ -26,7 +26,7 @@ app = (function() {
     numOfWedges = 10,
     
     // === ITT VANNAK AZ ÚJ BEÁLLÍTÁSOK A RESZPONZÍV KERÉKMÉRETHEZ ===
-    maxRadius = 250, // A kerék maximális sugara (max. 500px átmérő)
+    maxRadius = 300, // A kerék maximális sugara (max. 500px átmérő)
     // Kiszámoljuk a kisebbik képernyődimenzió 45%-át
     calculatedRadius = Math.min(window.innerWidth, window.innerHeight) * 0.45, 
     // A végső sugár a maximális és a számított érték közül a kisebbik lesz
@@ -110,26 +110,19 @@ app = (function() {
       var text = new Kinetic.Text({
         text: wedgeLabels[n],
         fontFamily: 'Fredoka One',
-        // A képhez hasonlóan állítsuk be a betűméretet. A 40 lehet túl nagy.
         fontSize: 20, 
         fill: '#000', // Fekete, hogy látszódjon a világos színeken
         align: 'center',
-        //stroke: '#fff',
-        //strokeWidth: 2,
+        
         opacity: 0.95,
         listening: false,
         
-        // *** MÓDOSÍTÁS 1: Elforgatja a szöveget, hogy sugárirányban álljon ***
         rotation: 90 
       });
       
-      // *** MÓDOSÍTÁS 2: Beállítja az eltolást (offset), hogy a szöveg ne folyjon össze ***
       
-      // Mivel 90 fokkal elforgattuk, az X eltolás vezérli a sugárirányú pozíciót.
-      // Ezzel a szöveget 30 egységgel a kerék szélétől befelé toljuk.
       text.offsetX(wheelRadius - 30);
       
-      // Az Y eltolás a szöveg közepét állítja a körcikk középvonalára.
       text.offsetY(text.height()/2);
       
       wedge.add(text);
@@ -210,15 +203,7 @@ app = (function() {
       
       var radiusPlus2 = wheelRadius + 2;
       
-      /*wheel.cache({
-        x: -1* radiusPlus2,
-        y: -1* radiusPlus2,
-        width: radiusPlus2 * 2,
-        height: radiusPlus2 * 2
-      }).offset({
-        x: radiusPlus2,
-        y: radiusPlus2
-      });*/
+     
       
       layer.draw();
 
