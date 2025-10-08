@@ -110,7 +110,7 @@ app = (function() {
       var text = new Kinetic.Text({
         text: wedgeLabels[n],
         fontFamily: 'Fredoka One',
-        fontSize: 18, 
+        fontSize: wheelRadius * 0.07, 
         fill: '#000', // Fekete, hogy látszódjon a világos színeken
         align: 'center',
         
