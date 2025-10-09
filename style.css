@@ -103,6 +103,27 @@ a {
   color: #e98b39; 
 }
 
+#spinButton {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+#spinButton:hover {
+    background-color: #2980b9;
+}
+
+#spinButton:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
 /* Nagy monitorokhoz */
 @media (min-width: 1200px) {
   h1{
