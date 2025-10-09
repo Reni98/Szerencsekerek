@@ -34,7 +34,7 @@ app = (function() {
     // =================================================================
     
     maxAngularVelocity = 360 * 1.5,
-    angularFriction = 0.5,
+    angularFriction = 0.6,
     angularVelocity = 360,
     lastRotation = 0,
     controlled = false, // set true for no autospin
@@ -100,7 +100,7 @@ app = (function() {
   "Sütemény és Csokoládé",
   "Joker",
   "Órarend",
-  "Sütemény",
+  "Suli toll",
   "Joker",
   "Suli toll",
   "Csokoládé",
