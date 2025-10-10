@@ -68,7 +68,7 @@ app = (function() {
 
       var wedgeLabels = [
         "Sütemény", "Órarend", "Sütemény és Csokoládé", "Joker", "Órarend", 
-        "Suli pohár", "Joker", "Suli toll", "Csokoládé", "Suli toll"
+        "Joker", "Joker", "Suli toll", "Csokoládé", "Csokoládé"
       ];
 
       var text = new Kinetic.Text({
